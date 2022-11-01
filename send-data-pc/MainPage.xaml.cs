@@ -1,24 +1,29 @@
-﻿namespace send_data_pc;
+﻿using UploadImageApp.Services;
+
+namespace send_data_pc;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	UploadImage serviceUploadImage;
 
 	public MainPage()
 	{
 		InitializeComponent();
-	}
+        serviceUploadImage = new UploadImage();
+    }
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	private async void UploadImage_Clicked(object sender, EventArgs e)
 	{
-		count++;
+        var img = await serviceUploadImage.OpenMediaPickerAsync();
+        if(img != null)
+        {
+            var imagefile = await serviceUploadImage.Upload(img);
+            Console.WriteLine(imagefile.byteBase64);
+            Image_Upload.Source = ImageSource.FromStream(() =>
+                serviceUploadImage.ByteArrayToStream(serviceUploadImage.StringToByteBase64(imagefile.byteBase64))
+            );
+        }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    }
 }
 

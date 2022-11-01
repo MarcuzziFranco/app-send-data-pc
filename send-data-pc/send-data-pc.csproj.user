@@ -3,8 +3,8 @@
   <PropertyGroup>
     <ActiveDebugFramework>net6.0-android</ActiveDebugFramework>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
-    <ActiveDebugProfile>API 26 (Android 8.0 - API 26)</ActiveDebugProfile>
-    <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
+    <ActiveDebugProfile>Xiaomi Redmi Note 4 (Android 7.0 - API 24)</ActiveDebugProfile>
+    <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
     <DefaultDevice>API_26</DefaultDevice>
   </PropertyGroup>
 </Project>
